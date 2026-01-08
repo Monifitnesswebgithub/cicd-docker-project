@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  web-app:
+    build: .
+    container_name: node-app-container
+    ports:
+      - "80:3000"  # Map Server Port 80 to Container Port 3000
+    restart: always
