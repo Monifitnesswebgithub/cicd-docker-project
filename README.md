@@ -83,3 +83,15 @@ Final README Reflection
 Action Taken: Synthesized all 27 technical stages—from initial Ubuntu setup to advanced Uptime Kuma monitoring and CSS animation logic—into a single professional repository document.
 
 Status: Project Handover Complete.
+
+
+## 🖼 Visual Gallery
+
+### 1. Animated Application UI (Live States)
+| Blue Theme | Pink Theme |
+|---|---|
+| ![App Blue](./screenshots/app-blue.jpg) | ![App Pink](./screenshots/app-pink.jpg) |
+
+### 2. Monitoring Dashboard (Uptime Kuma)
+> Real-time heartbeat monitoring showing 31.72% uptime (Initial start) and a healthy "UP" status.
+![Monitoring Status](./screenshots/dashboard-live.png)
