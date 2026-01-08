@@ -1,6 +1,12 @@
+version: '3.8'
+
 services:
   web-app:
-    # ... your existing config ...
+    build: .
+    container_name: node-app-container
+    ports:
+      - "80:3000"
+    restart: always
 
   monitoring:
     image: louislam/uptime-kuma:1
@@ -8,8 +14,8 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - uptime-kuma:/app/data
+      - uptime-data:/app/data
     restart: always
 
 volumes:
-  uptime-kuma:
+  uptime-data:
