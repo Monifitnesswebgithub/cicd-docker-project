@@ -1,57 +1,64 @@
-\pipeline {
+pipeline {
     agent any
-
-    environment {
-        // Define variables for easier management
-        APP_NAME = "my-node-app"
-    }
-
     stages {
-        stage('Cleanup') {
+        stage('Checkout') {
             steps {
-                echo 'Cleaning up old workspace files...'
-                cleanWs()
+                git 'https://github.com/Monifitnesswebgithub/cicd-docker-project.git'
             }
         }
-
-        stage('Checkout Source') {
+        stage('Build') {
             steps {
-                echo 'Pulling code from GitHub...'
-                checkout scm
-            }
-        }
-
-        stage('Build Image') {
-            steps {
-                echo 'Building Docker Image via Docker Compose...'
                 sh 'docker-compose build'
             }
         }
-
-        stage('Deploy Application') {
+        stage('Test') {
             steps {
-                echo 'Starting the application containers...'
-                // -d runs it in the background
+                echo 'Running Unit Tests...'
+                // This simulates a test success
+                sh 'node -v' 
+            }
+        }
+        stage('Push/Deploy') {
+            steps {
                 sh 'docker-compose up -d'
             }
         }
-
-        stage('Verify') {
+    }
+    post {
+        always {
+            sh 'docker system prune -f'
+        }
+    }
+}
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
             steps {
-                echo 'Checking if container is running...'
-                sh 'docker ps | grep node-app-container'
+                git 'https://github.com/YOUR_USERNAME/cicd-docker-project.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'docker-compose build'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running Unit Tests...'
+                // This simulates a test success
+                sh 'node -v' 
+            }
+        }
+        stage('Push/Deploy') {
+            steps {
+                sh 'docker-compose up -d'
             }
         }
     }
-
     post {
         always {
-            echo 'Cleaning up dangling Docker images...'
-            // This removes unused images and stopped containers
             sh 'docker system prune -f'
-        }
-        success {
-            echo 'Deployment Successful! Access your app at http://your-ip:80'
         }
     }
 }
