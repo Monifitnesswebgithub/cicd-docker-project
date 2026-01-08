@@ -9,17 +9,12 @@
 ## 📺 Project Showcase
 
 ### 🎨 Animated Application UI
-The application features a modern Glassmorphism design with a dynamic, shifting gradient background and a real-time status indicator.
-
 | Theme State: Blue | Theme State: Pink |
 |---|---|
-| ![App Blue](./screenshots/app-blue.jpg) | ![App Pink](./screenshots/app-pink.jpg) |
+| ![App Blue](./screenshots/Screenshot%202026-01-08%20160057.jpg) | ![App Pink](./screenshots/Screenshot%202026-01-08%20160103.jpg) |
 
 ### 📊 Real-Time Monitoring Dashboard
-Using **Uptime Kuma**, the system tracks heartbeat signals and response times directly from the Docker network.
-
-> **Status:** ✅ UP | **Avg Response:** 22ms
-![Uptime Kuma Dashboard](./screenshots/dashboard-live.png)
+![Uptime Kuma Dashboard](./screenshots/Screenshot%202026-01-08%20160149.png)
 
 ---
 
