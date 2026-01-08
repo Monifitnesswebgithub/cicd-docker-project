@@ -1,4 +1,4 @@
-pipeline {
+\pipeline {
     agent any
 
     environment {
@@ -45,11 +45,13 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Pipeline completed successfully!'
+        always {
+            echo 'Cleaning up dangling Docker images...'
+            // This removes unused images and stopped containers
+            sh 'docker system prune -f'
         }
-        failure {
-            echo 'Pipeline failed. Check the Jenkins console output.'
+        success {
+            echo 'Deployment Successful! Access your app at http://your-ip:80'
         }
     }
 }
